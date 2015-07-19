@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WebRTC example</title>
+</head>
+<body>
+  <button id="open-channel">Open a data channel</button><hr/>
+  <input id="signal" type="text"/><button id="signal-button">receive remote signal</button><hr/>
+  <input id="chat" type="text"/><button id="chat-button">chat</button><hr/>
+  <div id="output"></div>
+  <script type="text/javascript" charset="utf-8">
+    // convenience to allow pressing the enter key to click the button
+    var makeEnterClick = function(inputQuery, buttonQuery) {
+      document.querySelector(inputQuery).onkeypress = function(e) {
+        e = e || window.event;
+        if (e.keyCode == 13) {
+          document.querySelector(buttonQuery).click();
+          return false;
+        }
+        return true;
+      };
+    };
+    makeEnterClick("#signal", "#receive-button");
+    makeEnterClick("#chat", "#chat-button");
+  </script>
+  <script type="text/javascript" src="webrtc-example.js" ></script>
+</body>
+</html>
